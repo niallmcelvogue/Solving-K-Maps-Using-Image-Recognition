@@ -44,14 +44,10 @@ def transform(pts, img):
     warped = cv2.warpPerspective(img, matrix, (square, square))
     return warped
 
-def preproccesed(image):
-    image = cv2.resize(image,(960,540))
+def preprocessed(image):
+    image = cv2.resize(image, (960, 540))
     image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     processed = process(image)
-    cv2.imshow("processed",processed)
-    cv2.waitKey(0)
     corners = get_corners(processed)
-    warped_img = transform(corners,image)
-    cv2.imshow("image",warped_img)
-    cv2.waitKey(0)
+    warped_img = transform(corners, image)
     return warped_img
